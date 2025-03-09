@@ -107,7 +107,7 @@ def save_data():
         pretrain_types = ['16B']
     else:
         pretrain_types = ['350M', '2B', '6B']
-        pretrain_types = ['350M']
+        pretrain_types = ['6B']
 
     for pretrain_type in pretrain_types:
         if pretrain_type == '350M':
