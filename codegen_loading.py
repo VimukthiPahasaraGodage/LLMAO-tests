@@ -138,7 +138,7 @@ def save_data():
         except OSError:
             pass 
         os.chdir(save_path)
-        pretrain_type = "starcoder"
+        # pretrain_type = "starcoder"
         if not os.path.isdir(f"{data_name}_{pretrain_type}"):
             os.mkdir(f"{data_name}_{pretrain_type}")
 
@@ -147,11 +147,11 @@ def save_data():
             input = batch[0][0].detach()
             label = batch[1][0].detach()
             mask = batch[2][0].detach()
-            print_out = True
-            if print_out:
-                print(input.size())
-                print(label.size())
-                print(mask.size())
+            # print_out = True
+            # if print_out:
+            #     print(input.size())
+            #     print(label.size())
+            #     print(mask.size())
             hidden_layer_dict = {'input': input, 'label': label, 'mask': mask}
             save_path = '{}_{}/{}.pt'.format(
                 data_name, pretrain_type, batch_iter)
