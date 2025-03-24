@@ -79,7 +79,6 @@ def results(log_path, data_name, codegen_size):
                 f = open(os.path.join(subdir, file_))
 
                 subdir_name = subdir.replace(data_log_path + "/", "")
-                print(subdir_name)
 
                 split_dir = subdir_name.split("_")
                 if len(split_dir) == 4:
