@@ -53,12 +53,14 @@ class CSVDataLoader:
             decoded_program = row[0]
             label = json.loads(row[1])
         except:
+            print("could not decode row")
             return None
         hidden_states = self.get_hidden_state(
             decoded_program=decoded_program)
         sample_shape = list(hidden_states.size())[0]
         native_sample_size = len(decoded_program.split("\n"))
         if sample_shape+1 > MAX_LEN or native_sample_size != (sample_shape+1):
+            print("max length exceeded")
             return None
         # Padding
         sample_padding = torch.zeros(
