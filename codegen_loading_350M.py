@@ -60,7 +60,7 @@ class CSVDataLoader:
         sample_shape = list(hidden_states.size())[0]
         native_sample_size = len(decoded_program.split("\n"))
         if sample_shape+1 > MAX_LEN or native_sample_size != (sample_shape+1):
-            print("max length exceeded")
+            print("max length exceeded or sample size mismatch")
             return None
         # Padding
         sample_padding = torch.zeros(
