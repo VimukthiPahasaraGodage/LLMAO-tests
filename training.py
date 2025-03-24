@@ -472,25 +472,28 @@ def driver():
 
     if pretrain_type == "350M":
         dim_model = 1024
+        max_lr = 1e-4
+        min_lr = 1e-7
     elif pretrain_type == "2B":
         dim_model = 2560
-        max_lr = max_lr / 10
-        min_lr = min_lr / 10
+        max_lr = 7e-6
+        min_lr = 1e-7
     elif pretrain_type == "6B":
         dim_model = 4096
-        max_lr = max_lr / 15
-        min_lr = min_lr / 15
+        max_lr = 5e-6
+        min_lr = 1e-7
     elif pretrain_type == "16B":
         dim_model = 6144
-        max_lr = max_lr / 25
-        min_lr = min_lr / 25
+        max_lr = 4e-6
+        min_lr = 1e-7
 
+    batch_size = 16
     if data_name == "bugsinpy" or "defects4j" in data_name:
         batch_size = 8
     if data_name == "devign":
         batch_size = 16
 
-    useloop = False
+    useloop = True
     ten_fold = False
     load_checkpoint = False
     first_tb = False

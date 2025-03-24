@@ -107,7 +107,7 @@ def save_data():
         pretrain_types = ['16B']
     else:
         pretrain_types = ['350M', '2B', '6B']
-        pretrain_types = ['6B']
+        pretrain_types = ['350M']
 
     for pretrain_type in pretrain_types:
         if pretrain_type == '350M':
@@ -142,16 +142,18 @@ def save_data():
         if not os.path.isdir(f"{data_name}_{pretrain_type}"):
             os.mkdir(f"{data_name}_{pretrain_type}")
 
-        
+        done_index = 0
         for batch_iter, batch in enumerate(data_loaded):
             input = batch[0][0].detach()
             label = batch[1][0].detach()
             mask = batch[2][0].detach()
-            # print_out = True
-            # if print_out:
-            #     print(input.size())
-            #     print(label.size())
-            #     print(mask.size())
+            print_out = True
+            if print_out:
+                # print(input.size())
+                # print(label.size())
+                # print(mask.size())
+                print(f'Done: {done_index}')
+                done_index += 1
             hidden_layer_dict = {'input': input, 'label': label, 'mask': mask}
             save_path = '{}_{}/{}.pt'.format(
                 data_name, pretrain_type, batch_iter)
