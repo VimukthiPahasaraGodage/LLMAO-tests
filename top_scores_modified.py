@@ -126,7 +126,7 @@ def results(log_path, data_name, codegen_size):
 
         if total_bugs:
             print(
-                f"Top 1,3,5 of {total_bugs} total bugs for {data_name}-{params}--{dimension}: [{total_top_1}({top_ratio(total_top_1,total_bugs)}\%) & {total_top_3}({top_ratio(total_top_3,total_bugs)}\%) & {total_top_5}({top_ratio(total_top_5,total_bugs)}\%)]"
+                f"Top 1,3,5 of {total_bugs} total bugs for {data_name}-{params}--{dimension}: [{total_top_1}({top_ratio(total_top_1,total_bugs)}%) & {total_top_3}({top_ratio(total_top_3,total_bugs)}%) & {total_top_5}({top_ratio(total_top_5,total_bugs)}%)]"
             )
 
 
