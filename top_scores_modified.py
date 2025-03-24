@@ -23,8 +23,8 @@ def top_scores(probabilities, labels, label_name):
         window_split = 50
         prob_cutoffs = [0.35, 0.5, 0.6]
     elif "solidity_new" in label_name:
-        data_split = 20
-        window_split = 50
+        data_split = 15
+        window_split = 14
         prob_cutoffs = [0.35, 0.5, 0.6]
 
     for i, prob_cutoff in enumerate(prob_cutoffs):
@@ -100,6 +100,10 @@ def results(log_path, data_name, codegen_size):
                 data = json.load(f)
                 probabilities = data["prob"]
                 labels = data["label"]
+                total_bugs = 0
+                for label in labels:
+                    if label == 1.0:
+                        total_bugs += 1
                 f.close()
                 filtered_prob = []
                 filtered_label = []
@@ -113,16 +117,16 @@ def results(log_path, data_name, codegen_size):
                 total_top_5 += top_5
                 total_top_3 += top_3
                 total_top_1 += top_1
-                if "bugsinpy" in label_name:
-                    total_bugs = 493
-                elif "defects4j-1.2.0" in label_name:
-                    total_bugs = 226
-                elif "defects4j" in label_name:
-                    total_bugs = 395
-                elif "devign" in label_name:
-                    total_bugs = 5260
-                elif "solidity_new" in label_name:
-                    total_bugs = 180
+                # if "bugsinpy" in label_name:
+                #     total_bugs = 493
+                # elif "defects4j-1.2.0" in label_name:
+                #     total_bugs = 226
+                # elif "defects4j" in label_name:
+                #     total_bugs = 395
+                # elif "devign" in label_name:
+                #     total_bugs = 5260
+                # elif "solidity_new" in label_name:
+                #     total_bugs = 180
 
         if total_bugs:
             print(
